@@ -5,7 +5,7 @@ const config = require('../config');
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
-    'SELECT id, quote, author FROM quote OFFSET $1 LIMIT $2', 
+    'SELECT id, name, category, x_coordinate, y_coordinate FROM listing OFFSET $1 LIMIT $2', 
     [offset, config.listPerPage]
   );
   const data = helper.emptyOrRows(rows);
